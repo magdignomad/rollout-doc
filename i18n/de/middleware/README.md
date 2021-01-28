@@ -450,7 +450,7 @@ Setzen Sie in dem oberen Filterbereich die gewünschten Filter, wählen Sie dana
 
 ![portal export download](images/portal-export-download.png "Export downloaden über das fiskaltrust.Portal")
 
-Die oben beschriebene Vorgehensweise kann analog zu allen der Export-Ansicht angebotenen Export-Formate durchgeführt werden. Achten Sie beim Testen des DSFinV-K und TAR-File Export darauf, dass zuvor ein Tagesabschlußbeleg vom KassenSystem an die fiskaltrust.Middelware gesendet wurde.
+Die oben beschriebene Vorgehensweise kann analog zu allen der Export-Ansicht angebotenen Export-Formate durchgeführt werden. Achten Sie vor dem Test des DSFinV-K und TAR-File Export darauf, dass zuvor ein Tagesabschlußbeleg vom KassenSystem an die fiskaltrust.Middleware gesendet wurde.
 
 
 ### Schlußwort
@@ -597,7 +597,7 @@ Jede fiskaltrust.Middleware-Instanz wird mit einer sogenannten CashBox konfiguri
 
 
 
-In den enthaltenen Konfigurationen sind zum Beispiel Kommunikations-Endpunkte, Datenbankzugriff, TSE-Zugriff usw. definiert. Im Normallfall wird eine solche CashBox pro Kasse benötigt. Ein Rollout mit vielen Kassen ist daher bei einer manuellen Vorgehensweise sehr zeitintensiv, da grundsätzlich für jede Kasse eine eigene CashBox im Portal angelegt, zusammengestellt und publiziert werden muss. Des Weiteren muss der Launcher heruntergeladen werden und in der Kasse ausgeführt werden. 
+In den enthaltenen Konfigurationen sind zum Beispiel Kommunikations-Endpunkte, Datenbankzugriff, TSE-Zugriff usw. definiert. Im Normallfall wird eine solche CashBox pro Kasse benötigt. Ein Rollout ist bei einer manuellen Vorgehensweise mit vielen Kassen sehr zeitintensiv, da grundsätzlich für jede Kasse eine eigene CashBox im Portal angelegt, zusammengestellt und publiziert werden muss. Des Weiteren muss der Launcher heruntergeladen werden und in der Kasse ausgeführt werden. 
 
 Um diesen Prozess zu optimieren stellt fiskaltrust diverse Tools zur Verfügung. Eine zentrale Rolle spielen dabei die Möglichkeit des Templating zum Anlegen von CashBoxen und die Möglichkeit zum automatisierten Ausführen der Templates mit Hilfe der fiskaltrust Portal-API. 
 
