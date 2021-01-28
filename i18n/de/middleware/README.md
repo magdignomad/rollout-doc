@@ -640,7 +640,7 @@ Bei einer großen Menge von Kassen ist der initiale Rollout sehr zeitaufwendig, 
 
 ### Templating zum Anlegen von CashBoxen
 
-Beim Templating besteht die Möglichkeit mit Hilfe eines Konfigurations-Template automatisiert CashBoxen für den KassenBetreiber anzulegen. Es wird dafür ein Template vorbereitet und für den KassenBetreiber im fiskaltrust.Portal hinterlegt. Daraufhin erscheint das Template im fiskaltrust.Shop als kostenloses Produkt innerhalb des Accounts des KassenBetreibers . Es kann dort in beliebiger Menge ausgecheckt werden. Die Menge stellt dabei die Anzahl der CashBoxen dar, die automatisch generiert werden sollen. Sobald der Checkout-Prozess abgeschlossen ist, wird vom fiskaltrust.Portal durch Anwendung des Templates die entsprechende Anzahl von CashBoxen automatisch generiert und im Account des KassenBetreiber hinterlegt. 
+Beim Templating besteht die Möglichkeit, mit Hilfe eines Konfigurations-Template automatisiert CashBoxen für den KassenBetreiber anzulegen. Es wird dafür ein Template vorbereitet und für den KassenBetreiber im fiskaltrust.Portal hinterlegt. Daraufhin erscheint das Template im fiskaltrust.Shop als kostenloses Produkt innerhalb des Accounts des KassenBetreibers . Es kann dort in beliebiger Menge ausgecheckt werden. Die Menge stellt dabei die Anzahl der CashBoxen dar, die automatisch generiert werden sollen. Sobald der Checkout-Prozess abgeschlossen ist, wird vom fiskaltrust.Portal durch Anwendung des Templates die entsprechende Anzahl von CashBoxen automatisch generiert und im Account des KassenBetreiber hinterlegt. 
 
 Im Folgenden werden die einzelnen Schritte des oben beschriebenen Prozess detailliert dargestellt. Zudem stellen wir Ihnen ein [Video](https://www.youtube.com/watch?v=l6IcV7o_LFM&t=8s) zum Thema Templating zur Verfügung.
 
@@ -701,9 +701,9 @@ Im folgenden Snippet wird ein Beispiel eines solchen Template visualisiert:
 ```
 
 
-Variablen werden gekennzeichnet, indem sie innerhalb von ```|[``` und  ```]|``` angegeben werden. Möglich hierbei ist sowohl die Angabe von [Systemvariablen](#systemvariablen), deren Werte vom fiskaltrust System bei der Generierung erzeugt werden als auch die Angabe eigener Variablen, deren Werte später über einen API Aufruf zum Generieren der CashBox übergeben werden können (siehe auch [Parametrisierung des API Aufrufs](#parametrisierung)). 
+Variablen können erstellt werden, indem Sie diese mit  ```|[``` eröffnen und mit   ```]|``` abschließen. Dabei können [Systemvariablen](#systemvariablen) verwendet werden, deren Werte vom fiskaltrust System bei der Generierung erzeugt werden. Zum anderen wird auch die Angabe eigener Variablen unterstützt, deren Werte können später über einen API Aufruf zum Generieren der CashBox übergeben werden (siehe auch [Parametrisierung des API Aufrufs](#parametrisierung)). 
 
-In Zeile 1 des obigen Beispiel wird die Systemvariable: ```|[cashbox_id]|```  als Wert für ```"ftCashBoxId"``` angegeben. Hierbei geht es um die CashBoxID, einem Wert, der automatisch von dem System erzeugt wird und beim Generieren der CashBox an dieser Stelle eingesetzt wird.
+In Zeile 1 des obigen Beispiel wird die Systemvariable: ```|[cashbox_id]|```  als Wert für ```"ftCashBoxId"``` angegeben. Hierbei geht es um die CashBoxID, einen Wert, der automatisch vom System erzeugt und beim Generieren der CashBox an dieser Stelle eingesetzt wird.
 
 In Zeile 31 werden hingegen eigene Variablen verwendet (```|[my_shopcode]|``` und ```|[my_tillcode]|``` ) deren konkrete Werte später beim API Aufruf übergeben werden können. 
 
@@ -724,7 +724,7 @@ Ein **`PackageConfiguration`** Objekt ist wie folgt aufgebaut:
 | **Fieldname**        | **Pflicht**              | **Inhalt**          | **Beschreibung**          |
 |----------------------|--------------------------|--------------------------|---------------------|
 | `Id` |ja |  ```GUID String```  | Identifiziert die Instanz des Elements, das hier konfiguriert wird (SCU, Queue oder Helper). Für die Queue kann die Systemvariable `queue{0-9}_id` verwendet werden. Für die SCU kann hier die Systemvariable `scu{0-9}_id` zum Einsatz kommen. Für Helper  `helper{0-9}_id`. |
-| `Package` |ja | ```String``` | Name des Packages, das zum Erstellen des Elements verwendet werden soll, z.B. `fiskaltrust.Middleware.SCU.DE.CryptoVision` für eine SCU, die mit einer Cyptovision-TSE kommunizieren soll. Aktuell unterstützte Packages finden sie weiter unten. |
+| `Package` |ja | ```String``` | Name des Packages, das zum Erstellen des Elements verwendet werden soll, z.B. `fiskaltrust.Middleware.SCU.DE.CryptoVision` für eine SCU, die mit einer Cyptovision-TSE kommunizieren soll. Aktuell unterstützte Packages finden Sie in der mit **Queue** beschrifteten Tabelle unten. |
 | `Description` |nein |  ```String```| Name des Elements, z.B. der Queue oder SCU |
 | `Version` |nein |  ```String```| Version des Packages, das zum Erstellen des Elements verwendet werden soll. Wenn keine Version angegeben wird, so wird die neueste Version verwendet.|
 | `Configuration` |nein | `<String, Object>`| Konfigurationsparameter des Elements, z.B. Laufwerkbuchstabe der TSE bei der Cryptovision SCU, damit der SCU bekannt ist wie sie auf die TSE zugreifen soll. Je nach Element-Typ zu befüllen. Siehe unten. |
@@ -746,7 +746,7 @@ Folgende Schlüssel-Wert Paare werden in dem **`Configuration`** Objekt einer Qu
 | `init_ftQueue` |ja |  ```Configuration``` | Initialisierungsparameter für die Queue (allgemeiner Teil der Queue Konfiguration).|
 | `init_ftQueueDE` |ja |  ```Configuration``` | Initialisierungsparameter für die Queue (länderspezifischer Teil der Queue Konfiguration).|
 | `init_ftSignaturCreationUnitDE` |nein |  ```Configuration``` | Initialisierungsparameter zum Verknüpfen der Queue mit einer SCU. Hier werden Verbindungswerte hinterlegt.|
-| `connectionstring` |nein |  ```String``` | Verbindungsstring zum Persistenzlayer. Beispiel siehe unten. Bei SQLite kann dieses Feld weggelassen werden, falls keine eigene Datenbank vorhanden ist. In diesem Fall legt fiskaltrust automatisch eine SQLite Datenbank an. |
+| `connectionstring` |nein |  ```String``` | Verbindungsstring zum Persistenzlayer. Beispiel siehe unten. Bei SQLite kann dieses Feld weggelassen werden, falls keine eigene Datenbank vorhanden ist. In diesem Fall legt die Middleware automatisch eine SQLite Datenbank an. |
 
 - Beispiel für einen `connectionstring` bei Verwendung von Entity Framework:
 
